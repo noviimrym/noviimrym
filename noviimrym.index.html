@@ -1,14 +1,322 @@
 <!DOCTYPE html>
-
-<html>
+<html lang="id">
 <head>
-  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
-  <title>Hello, World!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novi Maryam | Portofolio Flower Princess</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --princess-pink: #fdf2f8;
+            --flower-gold: #d4af37;
+            --soft-rose: #fda4af;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fff5f7 0%, #fce7f3 100%);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .font-royal {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .cursive {
+            font-family: 'Dancing Script', cursive;
+        }
+
+        /* Animasi Kelopak Bunga Jatuh */
+        .petal {
+            position: absolute;
+            background-color: #ffc0cb;
+            border-radius: 150% 0 150% 0;
+            opacity: 0.7;
+            pointer-events: none;
+            z-index: 0;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Profile Image Frame with Glow */
+        .profile-frame {
+            position: relative;
+            padding: 8px;
+            background: linear-gradient(45deg, var(--flower-gold), #fb7185, #f472b6, var(--flower-gold));
+            border-radius: 50%;
+            animation: border-dance 5s linear infinite;
+            box-shadow: 0 0 30px rgba(251, 113, 133, 0.4);
+        }
+
+        @keyframes border-dance {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.45);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: 28px;
+        }
+
+        .hover-lift {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .hover-lift:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 35px -10px rgba(251, 113, 133, 0.3);
+        }
+
+        .floating {
+            animation: floating 4s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .profile-image {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid white;
+            display: block;
+        }
+
+        @media (min-width: 768px) {
+            .profile-image {
+                width: 280px;
+                height: 280px;
+            }
+        }
+    </style>
 </head>
-<body>
-  <h1>
-    Hello, World!
-  </h1>
-  <h6> hello saya novi sedang belajar membuat html</h6>
+<body class="text-gray-800">
+
+    <!-- Container Kelopak Bunga -->
+    <div id="petal-container" class="fixed inset-0 pointer-events-none z-10"></div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center bg-white/40 backdrop-blur-lg border-b border-rose-100">
+        <div class="text-2xl font-royal font-bold text-rose-500 tracking-widest uppercase">Novi Maryam</div>
+        <div class="hidden md:flex space-x-8 font-medium">
+            <a href="#home" class="hover:text-rose-400 transition">Beranda</a>
+            <a href="#about" class="hover:text-rose-400 transition">Tentang</a>
+            <a href="#skills" class="hover:text-rose-400 transition">Profil</a>
+            <a href="#contact" class="hover:text-rose-400 transition">Kontak</a>
+        </div>
+        <a href="#contact" class="bg-rose-400 text-white px-6 py-2 rounded-full shadow-lg hover:bg-rose-500 transition-all font-semibold">Sapa Novi</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex flex-col items-center justify-center pt-28 px-4 relative overflow-hidden">
+        <div class="profile-frame mb-8 floating">
+            <!-- Foto Profil Novi Maryam -->
+            <img src="https://simangu.smksalirsyad-hgl.sch.id/apimangu/uploads/siswa/232410038/1770622419_13c50855.jpg" 
+                 alt="Foto Profil Novi Maryam" 
+                 class="profile-image shadow-inner"
+                 onerror="this.src='https://ui-avatars.com/api/?name=Novi+Maryam&background=fda4af&color=fff&size=300'">
+        </div>
+        
+        <h2 class="cursive text-3xl md:text-4xl text-rose-400 mb-2">The Flower Princess</h2>
+        <h1 class="text-5xl md:text-7xl font-royal font-bold text-center text-gray-900 mb-6 tracking-tight">Halo, Saya <span class="text-rose-500">Novi Maryam</span></h1>
+        <p class="text-center max-w-xl text-gray-600 text-lg leading-relaxed italic font-light">
+            "Mekar dengan keanggunan, berhitung dengan ketelitian."
+        </p>
+        
+        <div class="mt-12 animate-bounce">
+            <a href="#about">
+                <svg class="w-8 h-8 text-rose-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto glass-card p-8 md:p-14 shadow-2xl border border-white/60 relative z-20">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative order-2 md:order-1">
+                    <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&q=80&w=600&h=600" 
+                         alt="Dekorasi Bunga Estetik" 
+                         class="rounded-3xl shadow-xl rotate-2 hover:rotate-0 transition-transform duration-700">
+                    <div class="absolute -bottom-6 -right-6 bg-white p-5 rounded-2xl shadow-2xl flex items-center space-x-3 border border-rose-50">
+                        <span class="text-3xl text-rose-400">📊</span>
+                        <div>
+                            <p class="text-xs text-gray-400 uppercase tracking-tighter font-bold">Spesialisasi</p>
+                            <p class="font-semibold text-rose-600">Akuntansi</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="text-4xl font-royal font-bold text-rose-500 mb-8 flex items-center">
+                        <span class="mr-4 h-px w-12 bg-rose-200"></span>
+                        Tentang Saya
+                    </h2>
+                    <div class="space-y-5 text-gray-700 leading-relaxed text-lg">
+                        <p>
+                            Halo! Nama saya <span class="font-bold text-rose-600">Novi Maryam</span>. Saya adalah seorang pemudi berusia 17 tahun yang memiliki minat besar dalam dunia profesional dan estetika.
+                        </p>
+                        <p>
+                            Saya bangga menjadi lulusan dari <span class="font-semibold italic text-gray-800">SMK Al Irsyad Al Islamiyyah Haurgeulis</span>, tempat di mana saya mengasah kemampuan saya di jurusan <span class="text-rose-600 font-bold italic underline decoration-rose-200">Akuntansi</span>.
+                        </p>
+                        <p>
+                            Bagi saya, ketelitian dalam akuntansi adalah cerminan dari kesabaran dalam merawat bunga. Keduanya membutuhkan dedikasi dan perhatian terhadap detail untuk menghasilkan sesuatu yang sempurna dan seimbang.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skill Cards Section -->
+    <section id="skills" class="py-24 px-6 bg-rose-50/40">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-royal font-bold text-gray-800 mb-4">Profil Singkat</h2>
+                <div class="w-24 h-1 bg-rose-300 mx-auto rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="p-10 glass-card hover-lift text-center group">
+                    <div class="w-20 h-20 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-rose-200 transition-colors">
+                        <span class="text-4xl">🏫</span>
+                    </div>
+                    <h3 class="font-royal text-2xl font-bold mb-3">Pendidikan</h3>
+                    <p class="text-gray-600 font-medium">SMK Al Irsyad Al Islamiyyah Haurgeulis</p>
+                </div>
+
+                <div class="p-10 glass-card hover-lift text-center group">
+                    <div class="w-20 h-20 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-rose-200 transition-colors">
+                        <span class="text-4xl">💰</span>
+                    </div>
+                    <h3 class="font-royal text-2xl font-bold mb-3">Keahlian</h3>
+                    <p class="text-gray-600 font-medium italic text-rose-500">Akuntansi & Keuangan</p>
+                </div>
+
+                <div class="p-10 glass-card hover-lift text-center group">
+                    <div class="w-20 h-20 bg-rose-100 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-rose-200 transition-colors">
+                        <span class="text-4xl">✨</span>
+                    </div>
+                    <h3 class="font-royal text-2xl font-bold mb-3">Usia</h3>
+                    <p class="text-gray-600 font-medium">17 Tahun Bersemi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 px-6">
+        <div class="max-w-3xl mx-auto text-center glass-card p-14 border-2 border-dashed border-rose-300 relative overflow-hidden">
+            <!-- Decorative flower behind contact -->
+            <div class="absolute -top-10 -right-10 opacity-10 rotate-45">
+                <svg width="200" height="200" viewBox="0 0 100 100" fill="currentColor" class="text-rose-400"><path d="M50 0C55 20 75 20 75 35C75 45 65 50 50 50C35 50 25 45 25 35C25 20 45 20 50 0ZM100 50C80 55 80 75 65 75C55 75 50 65 50 50C50 35 55 25 65 25C80 25 80 45 100 50ZM50 100C45 80 25 80 25 65C25 55 35 50 50 50C65 50 75 55 75 65C75 80 55 80 50 100ZM0 50C20 45 20 25 35 25C45 25 50 35 50 50C50 65 45 75 35 75C20 75 20 55 0 50Z"/></svg>
+            </div>
+
+            <h2 class="cursive text-4xl text-rose-400 mb-6">Hubungi Novi Maryam</h2>
+            <h3 class="text-3xl font-royal font-bold mb-10 text-gray-800 tracking-tight">Mari Berkolaborasi & Tumbuh Bersama</h3>
+            <p class="text-gray-600 mb-12 text-lg italic leading-relaxed">"Sama seperti taman yang indah memerlukan perawatan, sebuah impian memerlukan langkah nyata untuk dicapai."</p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a href="#" class="w-full sm:w-auto px-10 py-4 bg-rose-500 text-white rounded-full font-bold hover:bg-rose-600 transition-all shadow-xl hover:shadow-rose-200 transform hover:-translate-y-1">Download CV</a>
+                <a href="mailto:novi@example.com" class="w-full sm:w-auto px-10 py-4 border-2 border-rose-400 text-rose-500 rounded-full font-bold hover:bg-rose-50 transition-all transform hover:-translate-y-1">Kirim Email</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 text-center text-gray-500">
+        <div class="flex justify-center space-x-6 mb-8">
+            <a href="#" class="text-rose-300 hover:text-rose-500 transition-colors"><span class="sr-only">Instagram</span>📸</a>
+            <a href="#" class="text-rose-300 hover:text-rose-500 transition-colors"><span class="sr-only">LinkedIn</span>💼</a>
+            <a href="#" class="text-rose-300 hover:text-rose-500 transition-colors"><span class="sr-only">Twitter</span>🐦</a>
+        </div>
+        <p class="text-sm font-light">
+            &copy; 2024 Novi Maryam. Didesain dengan ✨ dan semangat bunga yang mekar.
+        </p>
+    </footer>
+
+    <script>
+        // Membuat Animasi Kelopak Bunga Secara Dinamis
+        function createPetal() {
+            const container = document.getElementById('petal-container');
+            const petal = document.createElement('div');
+            
+            const size = Math.random() * 15 + 12 + 'px';
+            petal.classList.add('petal');
+            petal.style.width = size;
+            petal.style.height = size;
+            petal.style.left = Math.random() * 100 + 'vw';
+            
+            // Variasi kecepatan animasi lebih halus
+            const duration = Math.random() * 6 + 8 + 's';
+            petal.style.animationDuration = duration;
+            
+            const colors = ['#ffc0cb', '#ffb6c1', '#fda4af', '#fff1f2', '#fecdd3', '#ffe4e6'];
+            petal.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Tambahkan rotasi acak awal
+            petal.style.transform = `rotate(${Math.random() * 360}deg)`;
+            
+            container.appendChild(petal);
+            
+            // Hapus elemen setelah animasi selesai
+            setTimeout(() => {
+                petal.remove();
+            }, parseFloat(duration) * 1000);
+        }
+
+        // Interval pembuatan kelopak sedikit diperlambat agar elegan
+        setInterval(createPetal, 500);
+
+        // Smooth Scroll handling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const target = document.querySelector(targetId);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer untuk efek fade in saat scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'all 0.8s ease-out';
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
