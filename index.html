@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novii | Portofolio Bunga</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --petal-pink: #fce4ec;
+            --deep-rose: #f06292;
+            --soft-gold: #d4af37;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fff9fb;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .cursive {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        /* Animasi Kelopak Bunga Jatuh */
+        .petal {
+            position: fixed;
+            top: -10%;
+            pointer-events: none;
+            z-index: 50;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Foto Profil Kelopak Bunga */
+        .profile-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 8px solid white;
+            box-shadow: 0 10px 25px rgba(240, 98, 146, 0.2);
+            z-index: 10;
+            position: relative;
+        }
+
+        .petal-border {
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23fce4ec' d='M50 0 C60 20 80 30 100 30 C80 40 70 60 70 80 C60 70 40 70 30 80 C30 60 20 40 0 30 C20 30 40 20 50 0'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: spin 20s linear infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Background Motif Bunga Lukisan */
+        .floral-bg {
+            background-image: url('https://www.transparenttextures.com/patterns/floral-paper.png');
+            opacity: 0.1;
+        }
+
+        .section-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(240, 98, 146, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(240, 98, 146, 0.1);
+        }
+
+        .custom-cursor {
+            width: 20px;
+            height: 20px;
+            background: rgba(240, 98, 146, 0.4);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 100;
+            transition: transform 0.1s;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor" class="custom-cursor hidden md:block"></div>
+
+    <!-- Background Animasi -->
+    <div id="petal-container"></div>
+    <div class="fixed inset-0 floral-bg pointer-events-none"></div>
+
+    <!-- Header / Navigation -->
+    <nav class="fixed w-full z-40 bg-white/50 backdrop-blur-md border-b border-pink-100">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <span class="cursive text-3xl text-pink-500 font-bold">Novii</span>
+            <div class="space-x-8 text-sm uppercase tracking-widest hidden md:flex">
+                <a href="#home" class="hover:text-pink-500 transition">Beranda</a>
+                <a href="#about" class="hover:text-pink-500 transition">Tentang</a>
+                <a href="#gallery" class="hover:text-pink-500 transition">Galeri</a>
+                <a href="#contact" class="hover:text-pink-500 transition">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex flex-col justify-center items-center relative px-6 pt-20">
+        <div class="profile-container mb-8">
+            <div class="petal-border"></div>
+            <!-- Placeholder Image for Profile -->
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=400&h=400&auto=format&fit=crop" alt="Foto Profil Novii" class="profile-img">
+        </div>
+        
+        <div class="text-center max-w-2xl">
+            <h2 class="text-pink-400 text-xl md:text-2xl mb-2 cursive">Selamat Datang</h2>
+            <h1 class="text-5xl md:text-7xl font-bold text-gray-800 mb-4">Mekar dengan Indah</h1>
+            <p class="text-gray-600 leading-relaxed mb-8 italic">
+                "Seperti bunga yang mekar di musim semi, setiap karya memiliki waktu dan kecantikannya sendiri."
+            </p>
+            <a href="#about" class="bg-pink-400 text-white px-8 py-3 rounded-full hover:bg-pink-500 transition-all shadow-lg shadow-pink-200">
+                Jelajahi Dunia Novii
+            </a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 container mx-auto px-6">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="relative">
+                <div class="absolute -top-10 -left-10 w-40 h-40 bg-pink-100 rounded-full blur-3xl opacity-60"></div>
+                <img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?q=80&w=800&auto=format&fit=crop" alt="Lukisan Bunga" class="rounded-2xl shadow-2xl relative z-10">
+            </div>
+            <div class="section-card p-10 rounded-3xl">
+                <h3 class="text-3xl font-bold text-gray-800 mb-6 border-l-4 border-pink-400 pl-4">Tentang Saya</h3>
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                    Halo, saya Novii. Saya adalah seorang pecinta seni dan keindahan alam. Melalui website ini, saya ingin membagikan potongan-potongan inspirasi yang saya temukan dalam kehidupan sehari-hari, terutama yang berkaitan dengan estetika bunga dan warna-warna lembut.
+                </p>
+                <p class="text-gray-600 leading-relaxed">
+                    Desain bagi saya bukan hanya tentang visual, tapi tentang perasaan. Seperti harum bunga mawar yang menenangkan, saya berharap portofolio ini bisa memberikan ketenangan bagi siapa pun yang berkunjung.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 bg-pink-50/30">
+        <div class="container mx-auto px-6 text-center mb-16">
+            <h3 class="text-4xl font-bold text-gray-800 mb-4">Koleksi Estetik</h3>
+            <p class="text-pink-400 italic">Beberapa lukisan dan momen yang mekar dalam ingatan</p>
+        </div>
+        
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Item 1 -->
+            <div class="group relative overflow-hidden rounded-2xl aspect-square">
+                <img src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-pink-500/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="text-white font-bold text-xl">Peony Pink</span>
+                </div>
+            </div>
+            <!-- Item 2 -->
+            <div class="group relative overflow-hidden rounded-2xl aspect-square">
+                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-pink-500/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="text-white font-bold text-xl">Lembah Mekar</span>
+                </div>
+            </div>
+            <!-- Item 3 -->
+            <div class="group relative overflow-hidden rounded-2xl aspect-square">
+                <img src="https://images.unsplash.com/photo-1507290439931-a861b4a38200?q=80&w=500&auto=format&fit=crop" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                <div class="absolute inset-0 bg-pink-500/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                    <span class="text-white font-bold text-xl">Sentuhan Sakura</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 container mx-auto px-6">
+        <div class="max-w-4xl mx-auto section-card p-12 rounded-3xl text-center">
+            <h3 class="cursive text-4xl text-pink-500 mb-4">Mari Bertegur Sapa</h3>
+            <h2 class="text-3xl font-bold mb-8">Kirimkan Pesan Manis Anda</h2>
+            
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Nama Lengkap</label>
+                    <input type="text" class="w-full px-4 py-3 rounded-xl border border-pink-100 focus:outline-none focus:ring-2 focus:ring-pink-300 transition" placeholder="Novii Lovers">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Email</label>
+                    <input type="email" class="w-full px-4 py-3 rounded-xl border border-pink-100 focus:outline-none focus:ring-2 focus:ring-pink-300 transition" placeholder="hello@novii.com">
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-semibold text-gray-700 mb-2">Pesan</label>
+                    <textarea rows="4" class="w-full px-4 py-3 rounded-xl border border-pink-100 focus:outline-none focus:ring-2 focus:ring-pink-300 transition" placeholder="Tuliskan sesuatu yang indah..."></textarea>
+                </div>
+                <div class="md:col-span-2 text-center mt-4">
+                    <button type="button" class="bg-pink-400 text-white px-12 py-3 rounded-full hover:bg-pink-500 transition shadow-lg inline-block">
+                        Kirim Pesan
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 text-center text-gray-500 border-t border-pink-50">
+        <p class="cursive text-2xl text-pink-400 mb-2">Novii</p>
+        <p class="text-xs tracking-widest uppercase">&copy; 2024 Didesain dengan Cinta & Kelopak Bunga</p>
+    </footer>
+
+    <script>
+        // Animasi Kursor
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Membuat Kelopak Bunga Jatuh
+        function createPetal() {
+            const container = document.getElementById('petal-container');
+            const petal = document.createElement('div');
+            
+            // Properti acak untuk kelopak
+            const size = Math.random() * 15 + 10;
+            const left = Math.random() * 100;
+            const duration = Math.random() * 10 + 5;
+            const delay = Math.random() * 5;
+            
+            petal.classList.add('petal');
+            petal.innerHTML = `
+                <svg width="${size}" height="${size}" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M50 0C50 0 80 40 100 50C80 60 50 100 50 100C50 100 20 60 0 50C20 40 50 0 50 0Z" fill="#fce4ec" opacity="0.8"/>
+                </svg>
+            `;
+            
+            petal.style.left = left + '%';
+            petal.style.animationDuration = duration + 's';
+            petal.style.animationDelay = delay + 's';
+            
+            container.appendChild(petal);
+            
+            // Hapus elemen setelah animasi selesai
+            setTimeout(() => {
+                petal.remove();
+            }, (duration + delay) * 1000);
+        }
+
+        // Loop untuk terus membuat kelopak
+        setInterval(createPetal, 300);
+
+        // Efek Scroll Reveal Sederhana
+        window.addEventListener('scroll', () => {
+            const cards = document.querySelectorAll('.section-card');
+            cards.forEach(card => {
+                const cardTop = card.getBoundingClientRect().top;
+                if(cardTop < window.innerHeight - 100) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Inisialisasi opacity card
+        document.querySelectorAll('.section-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.8s ease-out';
+        });
+    </script>
+</body>
+</html>
